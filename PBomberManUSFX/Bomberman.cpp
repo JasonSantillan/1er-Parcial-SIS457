@@ -25,52 +25,52 @@ Bomberman::Bomberman(Texture* _textura, Tile* _tileActual) :GamePawn(_textura, _
 	direccionActual = MOVE_DIRECTION_NONE;
 	direccionSiguiente = MOVE_DIRECTION_NONE;
 
+	miBandera = false;	//<----------------------------------------------------------------------------------------------------------
+
+
 }
 
 void Bomberman::update()
 {
-	direccionSiguiente = MOVE_DIRECTION_NONE;
-
-	if (keyboardInput->IsKeyOn(botonAbajo)) {
-		direccionSiguiente = MOVE_DIRECTION_ABAJO;
-	}
-	else if (keyboardInput->IsKeyOn(botonArriba)) {
+	if (keyboardInput->IsKeyOn(botonArriba)) {
 		direccionSiguiente = MOVE_DIRECTION_ARRIBA;
 	}
-	else if (keyboardInput->IsKeyOn(botonDerecha)) {
-		direccionSiguiente = MOVE_DIRECTION_DERECHA;
+	else if (keyboardInput->IsKeyOn(botonAbajo)) {
+		direccionSiguiente = MOVE_DIRECTION_ABAJO;
 	}
 	else if (keyboardInput->IsKeyOn(botonIzquierda)) {
 		direccionSiguiente = MOVE_DIRECTION_IZQUIERDA;
 	}
-		
+	else if (keyboardInput->IsKeyOn(botonDerecha)) {
+		direccionSiguiente = MOVE_DIRECTION_DERECHA;
+	}
+	//<----------------------------------------------------------------------------------------------------------
+	//<----------------------------------------------------------------------------------------------------------
+	if (keyboardInput->IsKeyOn(botonTraspasar)) {
+		miBandera = true;
+	}
+	else {
+		miBandera = false;
+	}
 
-	//if (tileActual != nullptr && tileActual->getSueloCesped() != nullptr) {
-	//	//Camina normalmente, se revisan colisiones
-	//}
-
-	// Animar Bomberman
-	//if (enMovimiento) {
-	//	//GameActor::update();
-	//}
-
-	//// Cambiar de direccion y tileSiguiente
-	//if (tileActual != nullptr && tileActual->getSueloCesped() != nullptr) {
-	//	//Camina normalmente, se revisan colisiones
-	//}
-
-	//if (tileSiguiente == tileActual || tileSiguiente == nullptr) {
+	if (miBandera == false) {
 		if (direccionSiguiente != direccionActual && tratarDeMover(direccionSiguiente))
 			direccionActual = direccionSiguiente;
 		else
 			tratarDeMover(direccionActual);
+	}
 
-		/*if (tileSiguiente == nullptr)
-			enMovimiento = false;
+	else{
+		if (direccionSiguiente != direccionActual && tratarDeMoverTraspasando(direccionSiguiente))
+			direccionActual = direccionSiguiente;
 		else
-			enMovimiento = true;*/
-	//}
-	//else {
+			tratarDeMoverTraspasando(direccionActual);
+	}
+	//<----------------------------------------------------------------------------------------------------------
+	//<----------------------------------------------------------------------------------------------------------
+
+
+
 	if (tileSiguiente != nullptr) {
 		switch (direccionActual) {
 		case MOVE_DIRECTION_ARRIBA:
@@ -91,10 +91,6 @@ void Bomberman::update()
 			break;
 		}
 
-		// Asignacion de coliciones
-		//
-		//
-
 		// Cambio de direccion
 
 		if ((direccionActual == MOVE_DIRECTION_ABAJO || direccionActual == MOVE_DIRECTION_ARRIBA) && posicionY == tileSiguiente->getPosicionTileY() * Tile::altoTile)
@@ -103,7 +99,7 @@ void Bomberman::update()
 		if ((direccionActual == MOVE_DIRECTION_IZQUIERDA || direccionActual == MOVE_DIRECTION_DERECHA) && posicionX == tileSiguiente->getPosicionTileX() * Tile::anchoTile)
 			setTileActual(tileSiguiente);
 	}
-	//}
+
 }
 
 void Bomberman::render()

@@ -92,7 +92,7 @@ bool GameActor::tratarDeMover(MoveDirection _direccionNueva) {
 		setTileSiguiente(nullptr);
 		return false;
 	}
-
+	
 	if (tileDestino->getMuroMetal() != nullptr)
 	{
 		setTileSiguiente(nullptr);
@@ -101,6 +101,35 @@ bool GameActor::tratarDeMover(MoveDirection _direccionNueva) {
 
 	if (tileDestino->getMuroCeramica() != nullptr)
 	{
+		setTileSiguiente(nullptr);
+		return false;
+	}
+
+	setTileSiguiente(tileDestino);
+	return true;
+}
+
+bool GameActor::tratarDeMoverTraspasando(MoveDirection _direccionNueva) {
+
+	Tile* tileDestino = nullptr;
+
+	switch (_direccionNueva)
+	{
+	case MOVE_DIRECTION_ARRIBA:
+		tileDestino = tilesGraph->getTileEn(tileActual->getPosicionTileX(), tileActual->getPosicionTileY() - 1);
+		break;
+	case MOVE_DIRECTION_ABAJO:
+		tileDestino = tilesGraph->getTileEn(tileActual->getPosicionTileX(), tileActual->getPosicionTileY() + 1);
+		break;
+	case MOVE_DIRECTION_IZQUIERDA:
+		tileDestino = tilesGraph->getTileEn(tileActual->getPosicionTileX() - 1, tileActual->getPosicionTileY());
+		break;
+	case MOVE_DIRECTION_DERECHA:
+		tileDestino = tilesGraph->getTileEn(tileActual->getPosicionTileX() + 1, tileActual->getPosicionTileY());
+		break;
+	}
+
+	if (tileDestino == nullptr) {
 		setTileSiguiente(nullptr);
 		return false;
 	}

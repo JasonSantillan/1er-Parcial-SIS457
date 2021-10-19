@@ -119,6 +119,7 @@ public:
 	/*bool revisarColision(const SDL_Rect* _otroColisionador);
 	bool revisarColision(const SDL_Rect* _colisionador1, const SDL_Rect* _colisionador2);*/
 	bool tratarDeMover(MoveDirection _direccionNueva);
+	bool tratarDeMoverTraspasando(MoveDirection _direccionNueva);
 	/*
 	int restarEnergia();
 	int restarVida();*/

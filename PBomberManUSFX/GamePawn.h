@@ -12,7 +12,7 @@ protected:
     SDL_Keycode botonAbajo = SDLK_DOWN;
     SDL_Keycode botonIzquierda = SDLK_LEFT;
     SDL_Keycode botonDerecha = SDLK_RIGHT;
-    
+    SDL_Keycode botonTraspasar = SDLK_v;        //<--------------------------------------------------------
 public:
     // Constructores destructor
     GamePawn();
@@ -25,7 +25,7 @@ public:
     void setBotomAbajo(SDL_KeyCode _botonAbajo) { botonAbajo = _botonAbajo; }
     void setBotomDerecha(SDL_KeyCode _botonDerecha) { botonDerecha = _botonDerecha; }
     void setBotomIzquierda(SDL_KeyCode _botonIzquierda) { botonIzquierda = _botonIzquierda; }
-
+    void setBotomTraspasar(SDL_KeyCode _botonTraspasar) { botonTraspasar = _botonTraspasar; }        //<--------------------------------------------------------
 
 
     // Metodos heredados

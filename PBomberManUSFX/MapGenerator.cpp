@@ -130,6 +130,7 @@ bool MapGenerator::crearObjetosJuego(string _path)
 		((GamePawn*)objetoBomberwoman)->setBotomAbajo(SDLK_s);
 		((GamePawn*)objetoBomberwoman)->setBotomIzquierda(SDLK_a);
 		((GamePawn*)objetoBomberwoman)->setBotomDerecha(SDLK_d);
+		((GamePawn*)objetoBomberwoman)->setBotomTraspasar(SDLK_p);	//<--------------------------------------------------------------------
 
 		vectorObjectosJuego.push_back(objetoBomberwoman);
 	}
