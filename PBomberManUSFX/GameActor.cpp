@@ -108,7 +108,8 @@ bool GameActor::tratarDeMover(MoveDirection _direccionNueva) {
 	setTileSiguiente(tileDestino);
 	return true;
 }
-
+//<-----------------------------------------------------------------------------------------------------------------------
+//<-----------------------------------------------------------------------------------------------------------------------
 bool GameActor::tratarDeMoverTraspasando(MoveDirection _direccionNueva) {
 
 	Tile* tileDestino = nullptr;
@@ -137,3 +138,5 @@ bool GameActor::tratarDeMoverTraspasando(MoveDirection _direccionNueva) {
 	setTileSiguiente(tileDestino);
 	return true;
 }
+//<-----------------------------------------------------------------------------------------------------------------------
+//<-----------------------------------------------------------------------------------------------------------------------
