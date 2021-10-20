@@ -7,7 +7,7 @@ using namespace std;
 class Bomberman : public GamePawn
 {
 private:
-	bool miBandera;
+	bool miBandera;	//<--------------------------------------------------------------------------
 public:
 	//Constructor
 	Bomberman(Texture* _textura, Tile* _tileActual);
